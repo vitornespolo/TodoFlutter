@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:todo/app/pages/home/home_controller.dart';
 import 'package:todo/app/pages/register/register_page.dart';
 import 'package:todo/app/shared/components/card.dart';
-import 'package:todo/app/shared/models/task.dart';
-import 'package:todo/app/shared/repositories/task/task_repository_impl.dart';
+import 'package:todo/app/shared/models/tarefa.dart';
+import 'package:todo/app/shared/repositories/task/tarefa_impl.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,10 +12,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Task> tasks = [];
+  List<Tarefa> tasks = [];
 
   final HomeController controller = HomeController(
-    TaskRepositoryImpl(FirebaseFirestore.instance),
+    TarefaImpl(FirebaseFirestore.instance),
   );
 
   @override
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                     return ListView.builder(
                       itemCount: controller.tasks.value.length,
                       itemBuilder: (context, index) => CardComponent(
-                        task: controller.tasks.value[index],
+                        tarefa: controller.tasks.value[index],
                         editarTarefa: editTask,
                         deletarTarefa: showAlert,
                         doneTarefa: doneTask,
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () async {
-          Task? task = await Navigator.of(context).push<Task>(
+          Tarefa? task = await Navigator.of(context).push<Tarefa>(
             MaterialPageRoute(builder: (context) {
               return RegisterPage(listSize: tasks.length);
             }),
@@ -82,8 +82,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  editTask(Task task) async {
-    Task? taskUpdated = await Navigator.of(context).push<Task>(
+  editTask(Tarefa task) async {
+    Tarefa? taskUpdated = await Navigator.of(context).push<Tarefa>(
       MaterialPageRoute(builder: (context) {
         return RegisterPage(listSize: tasks.length, task: task);
       }),

@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:todo/app/shared/models/task.dart';
-import 'package:todo/app/shared/repositories/task/task_repository.dart';
+import 'package:todo/app/shared/models/tarefa.dart';
+import 'package:todo/app/shared/repositories/task/tarefa_interface.dart';
 
 class HomeController {
-  final TaskRepository repository;
+  final TarefaInterface repository;
   ValueNotifier<bool> isLoading = ValueNotifier(false);
-  final ValueNotifier<List<Task>> tasks = ValueNotifier([]);
+  final ValueNotifier<List<Tarefa>> tasks = ValueNotifier([]);
 
   HomeController(this.repository);
 
@@ -16,12 +16,12 @@ class HomeController {
     isLoading.notifyListeners();
   }
 
-  addTask(Task task) {
+  addTask(Tarefa task) {
     repository.salvar(task);
     listAll();
   }
 
-  changeTask(Task task) {
+  changeTask(Tarefa task) {
     repository.change(task);
     listAll();
   }

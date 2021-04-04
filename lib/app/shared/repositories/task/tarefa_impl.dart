@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:todo/app/shared/models/task.dart';
-import 'package:todo/app/shared/repositories/task/task_repository.dart';
+import 'package:todo/app/shared/models/tarefa.dart';
+import 'package:todo/app/shared/repositories/task/tarefa_interface.dart';
 
-class TaskRepositoryImpl implements TaskRepository {
+class TarefaImpl implements TarefaInterface {
   final FirebaseFirestore firebaseFirestore;
-  TaskRepositoryImpl(this.firebaseFirestore);
+  TarefaImpl(this.firebaseFirestore);
 
   @override
-  Future<void> change(Task task) async {
+  Future<void> change(Tarefa task) async {
     await this
         .firebaseFirestore
         .collection('tarefas')
@@ -21,16 +21,16 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<List<Task>> findAll() async {
+  Future<List<Tarefa>> findAll() async {
     QuerySnapshot querySnapshot =
         await this.firebaseFirestore.collection('tarefas').orderBy('done').get();
     return querySnapshot.docs
-        .map((QueryDocumentSnapshot doc) => Task.fromMap(doc.data()!, doc.id))
+        .map((QueryDocumentSnapshot doc) => Tarefa.fromMap(doc.data()!, doc.id))
         .toList();
   }
 
   @override
-  Future<void> salvar(Task task) async {
+  Future<void> salvar(Tarefa task) async {
     await this.firebaseFirestore.collection('tarefas').add(task.toMap());
   }
 

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class GenericTextFormField extends StatelessWidget {
+class TextoGenericoFormField extends StatelessWidget {
   final String? labelText;
   final String? hintText;
   final String? errorMsg;
@@ -13,7 +13,7 @@ class GenericTextFormField extends StatelessWidget {
 
   Timer? timer;
 
-  GenericTextFormField({
+  TextoGenericoFormField({
     Key? key,
     this.labelText,
     this.hintText,

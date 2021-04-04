@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:todo/app/shared/models/task.dart';
+import 'package:todo/app/shared/models/tarefa.dart';
 
 class CardComponent extends StatelessWidget {
-  final Task task;
+  final Tarefa tarefa;
   final Function deletarTarefa;
   final Function editarTarefa;
   final Function doneTarefa;
 
   const CardComponent(
       {Key? key,
-      required this.task,
+      required this.tarefa,
       required this.deletarTarefa,
       required this.editarTarefa,
       required this.doneTarefa})
@@ -35,7 +35,7 @@ class CardComponent extends StatelessWidget {
                 Container(
                   width: 200,
                   child: Text(
-                    task.titulo!,
+                    tarefa.titulo!,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: 18),
                   ),
@@ -44,7 +44,7 @@ class CardComponent extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     width: 150,
-                    child: task.done
+                    child: tarefa.done
                         ? Center(
                             child: Text(
                               'Done'.toUpperCase(),
@@ -68,7 +68,7 @@ class CardComponent extends StatelessWidget {
                                       icon: Icon(Icons.edit),
                                       color: Colors.green,
                                       onPressed: () {
-                                        editarTarefa(task);
+                                        editarTarefa(tarefa);
                                       },
                                     ),
                                   ),
@@ -85,7 +85,7 @@ class CardComponent extends StatelessWidget {
                                       icon: Icon(Icons.delete),
                                       color: Colors.green,
                                       onPressed: () {
-                                        deletarTarefa(task.id);
+                                        deletarTarefa(tarefa.id);
                                       },
                                     ),
                                   ),
@@ -102,7 +102,7 @@ class CardComponent extends StatelessWidget {
                                       icon: Icon(Icons.check),
                                       color: Colors.green,
                                       onPressed: () {
-                                        doneTarefa(task.id);
+                                        doneTarefa(tarefa.id);
                                       },
                                     ),
                                   ),

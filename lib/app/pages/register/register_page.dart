@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:todo/app/shared/components/generic_text_field.dart';
-import 'package:todo/app/shared/models/task.dart';
+import 'package:todo/app/shared/components/testo_generico_field.dart';
+import 'package:todo/app/shared/models/tarefa.dart';
 
 class RegisterPage extends StatefulWidget {
-  late Task? task;
+  late Tarefa? task;
   late int listSize;
   RegisterPage({required this.listSize, this.task});
   @override
@@ -11,13 +11,13 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  late Task _task;
+  late Tarefa _task;
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    _task = (widget.task != null ? widget.task : Task())!;
+    _task = (widget.task != null ? widget.task : Tarefa())!;
   }
 
   @override
@@ -34,7 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                GenericTextFormField(
+                TextoGenericoFormField(
                   initialValue: widget.task != null ? widget.task!.titulo : '',
                   labelText: 'Tiulo',
                   errorMsg: 'Required',
@@ -44,7 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(
                   height: 10,
                 ),
-                GenericTextFormField(
+                TextoGenericoFormField(
                   initialValue:
                       widget.task != null ? widget.task!.descricao : '',
                   labelText: 'Descrição',
@@ -71,7 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void _save() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      Navigator.of(context).pop<Task>(_task);
+      Navigator.of(context).pop<Tarefa>(_task);
     }
   }
 }

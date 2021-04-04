@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todo/app/shared/models/task.dart';
+import 'package:todo/app/shared/models/tarefa.dart';
 
 class ItemListaWidget extends StatefulWidget {
-  final Task task;
+  final Tarefa task;
 
   const ItemListaWidget({Key? key, required this.task}) : super(key: key);
 

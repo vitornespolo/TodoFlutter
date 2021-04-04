@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Task {
+class Tarefa {
   String? id;
   String? titulo;
   String? descricao;
   bool done;
 
-  Task({
+  Tarefa({
     this.id,
     this.titulo,
     this.descricao,
@@ -23,8 +23,8 @@ class Task {
     };
   }
 
-  factory Task.fromMap(Map<String, dynamic> map, String documentId) {
-    return Task(
+  factory Tarefa.fromMap(Map<String, dynamic> map, String documentId) {
+    return Tarefa(
       id: documentId,
       titulo: map['titulo'],
       descricao: map['descricao'],
@@ -34,6 +34,6 @@ class Task {
 
   String toJson() => json.encode(toMap());
 
-  factory Task.fromJson(String source, String documentId) =>
-      Task.fromMap(json.decode(source), documentId);
+  factory Tarefa.fromJson(String source, String documentId) =>
+      Tarefa.fromMap(json.decode(source), documentId);
 }
