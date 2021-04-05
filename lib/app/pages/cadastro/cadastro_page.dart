@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:todo/app/shared/components/testo_generico_field.dart';
-import 'package:todo/app/shared/models/tarefa.dart';
+import 'package:todo/app/core/components/testo_generico_field.dart';
+import 'package:todo/app/core/models/tarefa.dart';
 
-class RegisterPage extends StatefulWidget {
+class CadastroPage extends StatefulWidget {
   late Tarefa? task;
   late int listSize;
-  RegisterPage({required this.listSize, this.task});
+  CadastroPage({required this.listSize, this.task});
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _CadastroPageState createState() => _CadastroPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _CadastroPageState extends State<CadastroPage> {
   late Tarefa _task;
   final _formKey = GlobalKey<FormState>();
 
@@ -57,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 10,
                 ),
                 ElevatedButton(
-                  onPressed: _save,
+                  onPressed: _salvar,
                   child: Text('Salvar'),
                 )
               ],
@@ -68,7 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void _save() {
+  void _salvar() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       Navigator.of(context).pop<Tarefa>(_task);

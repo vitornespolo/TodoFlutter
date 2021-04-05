@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:todo/app/pages/home/home_controller.dart';
-import 'package:todo/app/pages/register/register_page.dart';
-import 'package:todo/app/shared/components/card.dart';
-import 'package:todo/app/shared/models/tarefa.dart';
-import 'package:todo/app/shared/repositories/task/tarefa_impl.dart';
+import 'package:todo/app/pages/cadastro/cadastro_page.dart';
+import 'package:todo/app/core/components/card.dart';
+import 'package:todo/app/core/models/tarefa.dart';
+import 'package:todo/app/core/repositories/task/tarefa_impl.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () async {
           Tarefa? task = await Navigator.of(context).push<Tarefa>(
             MaterialPageRoute(builder: (context) {
-              return RegisterPage(listSize: tasks.length);
+              return CadastroPage(listSize: tasks.length);
             }),
           );
           controller.addTask(task!);
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
   editTask(Tarefa task) async {
     Tarefa? taskUpdated = await Navigator.of(context).push<Tarefa>(
       MaterialPageRoute(builder: (context) {
-        return RegisterPage(listSize: tasks.length, task: task);
+        return CadastroPage(listSize: tasks.length, task: task);
       }),
     );
     controller.changeTask(taskUpdated!);

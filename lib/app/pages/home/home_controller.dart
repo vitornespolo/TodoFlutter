@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:todo/app/shared/models/tarefa.dart';
-import 'package:todo/app/shared/repositories/task/tarefa_interface.dart';
+import 'package:todo/app/core/models/tarefa.dart';
+import 'package:todo/app/core/repositories/task/tarefa_interface.dart';
 
 class HomeController {
   final TarefaInterface repository;

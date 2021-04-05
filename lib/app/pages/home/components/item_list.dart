@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo/app/shared/models/tarefa.dart';
+import 'package:todo/app/core/models/tarefa.dart';
 
 class ItemListaWidget extends StatefulWidget {
   final Tarefa task;

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:todo/app/shared/models/tarefa.dart';
+import 'package:todo/app/core/models/tarefa.dart';
 
 class CardComponent extends StatelessWidget {
   final Tarefa tarefa;

@@ -1,4 +1,4 @@
-import 'package:todo/app/shared/models/tarefa.dart';
+import 'package:todo/app/core/models/tarefa.dart';
 
 abstract class TarefaInterface {
   Future<void> salvar(Tarefa task);

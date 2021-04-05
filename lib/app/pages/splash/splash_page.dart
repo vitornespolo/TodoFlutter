@@ -42,7 +42,7 @@ class _SplashPageState extends State<SplashPage> {
           ValueListenableBuilder(
             builder: (_, __, ___) {
               if (controller.error.value) {
-                return Text('FireBase erro ao Iniciar');
+                return Text('Erro ao inicialiar o firebase');
               } else {
                 return Container(height: 0);
               }
@@ -56,13 +56,11 @@ class _SplashPageState extends State<SplashPage> {
 
   void _redirectToHome() {
     Timer(Duration(milliseconds: 500), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (_) {
-            return HomePage();
-          },
-        ),
-      );
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (_) {
+          return HomePage();
+        },
+      ));
     });
   }
 }
